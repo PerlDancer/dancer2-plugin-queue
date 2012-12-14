@@ -45,22 +45,35 @@
          "requires" : {
             "Class::Load" : "0",
             "Dancer::Plugin" : "0",
-            "perl" : "5.008001",
+            "Moo" : "0",
+            "Moo::Role" : "0",
+            "perl" : "5.010",
             "strict" : "0",
             "warnings" : "0"
          }
       },
       "test" : {
          "requires" : {
+            "Dancer" : "0",
+            "Dancer::Test" : "0",
             "File::Find" : "0",
             "File::Temp" : "0",
-            "Test::More" : "0"
+            "Test::More" : "0.96",
+            "perl" : "5.010"
          }
       }
    },
    "provides" : {
       "Dancer::Plugin::Queue" : {
          "file" : "lib/Dancer/Plugin/Queue.pm",
+         "version" : "0.001"
+      },
+      "Dancer::Plugin::Queue::Array" : {
+         "file" : "lib/Dancer/Plugin/Queue/Array.pm",
+         "version" : "0.001"
+      },
+      "Dancer::Plugin::Queue::Role::Queue" : {
+         "file" : "lib/Dancer/Plugin/Queue/Role/Queue.pm",
          "version" : "0.001"
       }
    },
