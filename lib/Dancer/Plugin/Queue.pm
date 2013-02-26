@@ -96,7 +96,7 @@ This plugin should be compatible with Dancer 1 and Dancer 2.
 
 =head1 CONFIGURATION
 
-Queue objects are defined by a C<NAME => HASHREF> pair.  The hash reference
+Queue objects are defined by a C<< NAME => HASHREF >> pair.  The hash reference
 must contain a 'class' key, whose value is a class name suffix that will be
 appended to C<Dancer::Plugin::Queue::>.  The resulting class will be loaded on
 demand.  If the hash reference contains an 'options' key, its value will be
