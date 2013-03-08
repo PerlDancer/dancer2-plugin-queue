@@ -14,24 +14,36 @@ use Dancer2::Plugin::Queue;
 use HTTP::Tiny;
 use Test::TCP;
 
+=attr backend
+
+The short name for a Dancer2::Plugin::Queue implementation to test.
+
+=cut
+
 has backend => (
     is       => 'ro',
     isa      => Str,
     required => 1,
 );
 
+=attr options
+
+A hash reference of options to configure the backend.
+
+=cut
+
 has options => (
     is      => 'ro',
     isa     => HashRef,
-    default => sub { {} },
+    default => sub { { name => 'test' } },
 );
 
-has server => (
+has _server => (
     is  => 'lazy',
     isa => CodeRef,
 );
 
-sub _build_server {
+sub _build__server {
     my ($self) = @_;
     return sub {
         my $port = shift;
@@ -82,7 +94,7 @@ test 'queue and dequeue' => sub {
             my $res = $ua->get( $url . "add?msg=Hello%20World" );
             like $res->{content}, qr/Hello World/i, "sent and receieved message";
         },
-        server => $self->server,
+        server => $self->_server,
     );
 };
 
@@ -98,15 +110,22 @@ In your backend test file:
 
     with 'Dancer2::Plugin::Queue::Role::Test';
 
+    main->new( backend => 'Array', options => { name => "foo" } )->run_me;
+
+    done_testing;
+
 =head1 DESCRIPTION
 
-This module might be cool, but you'd never know it from the lack
-of documentation.
+This module is a L<Test::Roo> role used for testing L<Dancer2::Plugin::Queue>
+implementations.
 
-=head1 SEE ALSO
+Implementations using this test role must ensure that the following modules are
+included as test requirements:
 
 =for :list
+* L<HTTP::Tiny>
 * L<Test::Roo>
+* L<Test::TCP>
 
 =cut
 
