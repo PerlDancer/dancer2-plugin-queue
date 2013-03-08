@@ -8,6 +8,7 @@ package Dancer2::Plugin::Queue::Array;
 
 # Dependencies
 use Moo;
+use MooX::Types::MooseLike::Base qw/Str ArrayRef/;
 with 'Dancer2::Plugin::Queue::Role::Queue';
 
 =attr name
@@ -19,11 +20,13 @@ in order to test how options are passed to queue implementations
 
 has name => (
     is       => 'ro',
+    isa      => Str,
     required => 1,
 );
 
 has _messages => (
     is      => 'ro',
+    isa     => ArrayRef,
     default => sub { [] },
 );
 
