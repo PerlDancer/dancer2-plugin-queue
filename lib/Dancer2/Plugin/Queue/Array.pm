@@ -2,13 +2,13 @@ use 5.008001;
 use strict;
 use warnings;
 
-package Dancer::Plugin::Queue::Array;
-# ABSTRACT: No abstract given for Dancer::Plugin::Queue::Array
+package Dancer2::Plugin::Queue::Array;
+# ABSTRACT: Single-process, in-memory queue
 # VERSION
 
 # Dependencies
 use Moo;
-with 'Dancer::Plugin::Queue::Role::Queue';
+with 'Dancer2::Plugin::Queue::Role::Queue';
 
 =attr name
 
@@ -89,4 +89,4 @@ for testing.
 
 =cut
 
-# vim: ts=2 sts=2 sw=2 et:
+# vim: ts=4 sts=4 sw=4 et:

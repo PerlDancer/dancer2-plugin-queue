@@ -1,8 +1,14 @@
-Revision history for Dancer-Plugin-Queue
+Revision history for Dancer2-Plugin-Queue
 
 {{$NEXT}}
 
+    [CHANGED]
+
+    - Forked to Dancer2::Plugin::Queue
+
+**** Prior history is for Dancer::Plugin::Queue ****
+
 0.001     2012-12-13 23:01:57 America/New_York
 
-  - First release
+    - First release
 

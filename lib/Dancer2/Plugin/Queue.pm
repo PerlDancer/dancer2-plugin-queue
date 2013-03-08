@@ -2,18 +2,18 @@ use 5.008001;
 use strict;
 use warnings;
 
-package Dancer::Plugin::Queue;
-# ABSTRACT: Dancer plugin for message queue abstractions
+package Dancer2::Plugin::Queue;
+# ABSTRACT: Dancer2 plugin for message queue abstractions
 # VERSION
 
-use Dancer::Plugin;
+use Dancer2::Plugin;
 use Class::Load qw/try_load_class/;
 
 my %queues;
 my $conf;
 
 register queue => sub {
-  my ( $self, $name ) = plugin_args(@_);
+  my ( $dsl, $name ) = plugin_args(@_);
   $conf ||= plugin_setting();
 
   # if name not specified, DWIM or use 'default'
@@ -39,12 +39,12 @@ register queue => sub {
   my $class = $queue_conf->{class}
     or die "No class specified for queue '$name'";
 
-  $class = "Dancer::Plugin::Queue::$class";
+  $class = "Dancer2::Plugin::Queue::$class";
 
   try_load_class($class)
     or die "Queue class '$class' could not be loaded";
 
-  $class->can('DOES') && $class->DOES("Dancer::Plugin::Queue::Role::Queue")
+  $class->can('DOES') && $class->DOES("Dancer2::Plugin::Queue::Role::Queue")
     or die "Queue class '$class' does not implement the expected role";
 
   my $object = eval { $class->new( $queue_conf->{options} || {} ) }
@@ -53,7 +53,7 @@ register queue => sub {
   return $queues{$name} = $object;
 };
 
-register_plugin for_versions => [ 1, 2 ];
+register_plugin for_versions => [ 2 ];
 1;
 
 =for Pod::Coverage method_names_here
@@ -71,7 +71,7 @@ register_plugin for_versions => [ 1, 2 ];
 
   # in your app
 
-  use Dancer::Plugin::Queue;
+  use Dancer2::Plugin::Queue;
 
   post '/add_fortune' => sub {
     # assume a 'fortune' parameter submitted
@@ -89,16 +89,14 @@ register_plugin for_versions => [ 1, 2 ];
 =head1 DESCRIPTION
 
 This module provides a generic interface to a message queue.  Message queue
-implementations must implement the L<Dancer::Plugin::Queue::Role::Queue> role,
+implementations must implement the L<Dancer2::Plugin::Queue::Role::Queue> role,
 which defines the interface to abstract the specifics of the backend.
-
-This plugin should be compatible with Dancer 1 and Dancer 2.
 
 =head1 CONFIGURATION
 
 Queue objects are defined by a C<< NAME => HASHREF >> pair.  The hash reference
 must contain a 'class' key, whose value is a class name suffix that will be
-appended to C<Dancer::Plugin::Queue::>.  The resulting class will be loaded on
+appended to C<Dancer2::Plugin::Queue::>.  The resulting class will be loaded on
 demand.  If the hash reference contains an 'options' key, its value will be
 passed to the constructor when the queue object is created.
 
@@ -109,7 +107,7 @@ passed to the constructor when the queue object is created.
   queue;
   queue($name);
 
-This function returns a C<Dancer::Plugin::Queue::*> object.  If no C<$name> is
+This function returns a C<Dancer2::Plugin::Queue::*> object.  If no C<$name> is
 provided, it attempts to return a default object.  If there is only a single
 queue defined, it will be used as the default.  If there is more than one, a
 queue called 'default' will be the default.  If there are more than one and
@@ -147,3 +145,4 @@ message durability, this method may do nothing.
 
 =cut
 
+# vim: ts=4 sts=4 sw=4 et:
