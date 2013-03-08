@@ -2,11 +2,11 @@
 
 =head1 NAME
 
-Dancer::Plugin::Queue - Dancer plugin for message queue abstractions
+Dancer2::Plugin::Queue - Dancer2 plugin for message queue abstractions
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -21,7 +21,7 @@ version 0.001
 
   # in your app
 
-  use Dancer::Plugin::Queue;
+  use Dancer2::Plugin::Queue;
 
   post '/add_fortune' => sub {
     # assume a 'fortune' parameter submitted
@@ -38,18 +38,16 @@ version 0.001
 =head1 DESCRIPTION
 
 This module provides a generic interface to a message queue.  Message queue
-implementations must implement the L<Dancer::Plugin::Queue::Role::Queue> role,
+implementations must implement the L<Dancer2::Plugin::Queue::Role::Queue> role,
 which defines the interface to abstract the specifics of the backend.
-
-This plugin should be compatible with Dancer 1 and Dancer 2.
 
 =for Pod::Coverage method_names_here
 
 =head1 CONFIGURATION
 
-Queue objects are defined by a C<NAME => HASHREF> pair.  The hash reference
+Queue objects are defined by a C<< NAME => HASHREF >> pair.  The hash reference
 must contain a 'class' key, whose value is a class name suffix that will be
-appended to C<Dancer::Plugin::Queue::>.  The resulting class will be loaded on
+appended to C<Dancer2::Plugin::Queue::>.  The resulting class will be loaded on
 demand.  If the hash reference contains an 'options' key, its value will be
 passed to the constructor when the queue object is created.
 
@@ -60,7 +58,7 @@ passed to the constructor when the queue object is created.
   queue;
   queue($name);
 
-This function returns a C<Dancer::Plugin::Queue::*> object.  If no C<$name> is
+This function returns a C<Dancer2::Plugin::Queue::*> object.  If no C<$name> is
 provided, it attempts to return a default object.  If there is only a single
 queue defined, it will be used as the default.  If there is more than one, a
 queue called 'default' will be the default.  If there are more than one and
@@ -103,7 +101,7 @@ message durability, this method may do nothing.
 =head2 Bugs / Feature Requests
 
 Please report any bugs or feature requests through the issue tracker
-at L<https://github.com//dancer-plugin-queue/issues>.
+at L<https://github.com/dagolden/dancer2-plugin-queue/issues>.
 You will be notified automatically of any progress on your issue.
 
 =head2 Source Code
@@ -111,9 +109,9 @@ You will be notified automatically of any progress on your issue.
 This is open source software.  The code repository is available for
 public review and contribution under the terms of the license.
 
-L<https://github.com/dagolden/dancer-plugin-queue>
+L<https://github.com/dagolden/dancer2-plugin-queue>
 
-  git clone git://github.com/dagolden/dancer-plugin-queue.git
+  git clone git://github.com/dagolden/dancer2-plugin-queue.git
 
 =head1 AUTHOR
 

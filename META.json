@@ -1,10 +1,10 @@
 {
-   "abstract" : "Dancer plugin for message queue abstractions",
+   "abstract" : "Dancer2 plugin for message queue abstractions",
    "author" : [
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300028, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "apache_2_0"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Dancer-Plugin-Queue",
+   "name" : "Dancer2-Plugin-Queue",
    "no_index" : {
       "directory" : [
          "t",
@@ -44,9 +44,11 @@
          },
          "requires" : {
             "Class::Load" : "0",
-            "Dancer::Plugin" : "0",
+            "Dancer2" : "0",
+            "Dancer2::Plugin" : "0",
             "Moo" : "0",
             "Moo::Role" : "0",
+            "MooX::Types::MooseLike::Base" : "0",
             "perl" : "5.010",
             "strict" : "0",
             "warnings" : "0"
@@ -54,41 +56,49 @@
       },
       "test" : {
          "requires" : {
-            "Dancer" : "0",
-            "Dancer::Test" : "0",
+            "ExtUtils::MakeMaker" : "0",
             "File::Find" : "0",
+            "File::Spec::Functions" : "0",
             "File::Temp" : "0",
-            "Test::More" : "0.96",
+            "HTTP::Tiny" : "0",
+            "List::Util" : "0",
+            "Test::More" : "0",
+            "Test::Roo" : "0",
+            "Test::TCP" : "0",
             "perl" : "5.010"
          }
       }
    },
    "provides" : {
-      "Dancer::Plugin::Queue" : {
-         "file" : "lib/Dancer/Plugin/Queue.pm",
-         "version" : "0.001"
+      "Dancer2::Plugin::Queue" : {
+         "file" : "lib/Dancer2/Plugin/Queue.pm",
+         "version" : "0.002"
       },
-      "Dancer::Plugin::Queue::Array" : {
-         "file" : "lib/Dancer/Plugin/Queue/Array.pm",
-         "version" : "0.001"
+      "Dancer2::Plugin::Queue::Array" : {
+         "file" : "lib/Dancer2/Plugin/Queue/Array.pm",
+         "version" : "0.002"
       },
-      "Dancer::Plugin::Queue::Role::Queue" : {
-         "file" : "lib/Dancer/Plugin/Queue/Role/Queue.pm",
-         "version" : "0.001"
+      "Dancer2::Plugin::Queue::Role::Queue" : {
+         "file" : "lib/Dancer2/Plugin/Queue/Role/Queue.pm",
+         "version" : "0.002"
+      },
+      "Dancer2::Plugin::Queue::Role::Test" : {
+         "file" : "lib/Dancer2/Plugin/Queue/Role/Test.pm",
+         "version" : "0.002"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com//dancer-plugin-queue/issues"
+         "web" : "https://github.com/dagolden/dancer2-plugin-queue/issues"
       },
-      "homepage" : "https://metacpan.org/release/Dancer-Plugin-Queue",
+      "homepage" : "https://metacpan.org/release/Dancer2-Plugin-Queue",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/dagolden/dancer-plugin-queue.git",
-         "web" : "https://github.com/dagolden/dancer-plugin-queue"
+         "url" : "git://github.com/dagolden/dancer2-plugin-queue.git",
+         "web" : "https://github.com/dagolden/dancer2-plugin-queue"
       }
    },
-   "version" : "0.001"
+   "version" : "0.002"
 }
 
