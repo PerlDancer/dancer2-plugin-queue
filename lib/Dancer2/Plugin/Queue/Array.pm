@@ -18,13 +18,13 @@ in order to test how options are passed to queue implementations
 =cut
 
 has name => (
-  is       => 'ro',
-  required => 1,
+    is       => 'ro',
+    required => 1,
 );
 
 has _messages => (
-  is      => 'ro',
-  default => sub { [] },
+    is      => 'ro',
+    default => sub { [] },
 );
 
 =method add_msg
@@ -36,8 +36,8 @@ Enqueues $data as a message.
 =cut
 
 sub add_msg {
-  my ( $self, $msg ) = @_;
-  push @{ $self->_messages }, $msg;
+    my ( $self, $msg ) = @_;
+    push @{ $self->_messages }, $msg;
 }
 
 =method get_msg
@@ -49,9 +49,9 @@ Dequeues a message.
 =cut
 
 sub get_msg {
-  my ($self) = @_;
-  my $msg = shift @{ $self->_messages };
-  return wantarray ? ( $msg, $msg ) : $msg;
+    my ($self) = @_;
+    my $msg = shift @{ $self->_messages };
+    return wantarray ? ( $msg, $msg ) : $msg;
 }
 
 =method remove_msg
@@ -64,8 +64,8 @@ for this demo class, does nothing, since C<get_msg> already removed it.
 =cut
 
 sub remove_msg {
-  my ( $self, $msg ) = @_;
-  # XXX NOOP since 'get_msg' already removes it
+    my ( $self, $msg ) = @_;
+    # XXX NOOP since 'get_msg' already removes it
 }
 
 1;

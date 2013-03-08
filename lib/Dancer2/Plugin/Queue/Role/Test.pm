@@ -40,7 +40,7 @@ sub _build_server {
         set startup_info => 0;
         set print_banner => 0;
         set show_errors  => 1;
-        set plugins => {
+        set plugins      => {
             Queue => {
                 default => {
                     class   => $self->backend,

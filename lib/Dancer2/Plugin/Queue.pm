@@ -13,47 +13,47 @@ my %queues;
 my $conf;
 
 register queue => sub {
-  my ( $dsl, $name ) = plugin_args(@_);
-  $conf ||= plugin_setting();
+    my ( $dsl, $name ) = plugin_args(@_);
+    $conf ||= plugin_setting();
 
-  # if name not specified, DWIM or use 'default'
-  if ( not defined $name ) {
-    if ( keys %$conf == 1 ) {
-      ($name) = keys %$conf;
+    # if name not specified, DWIM or use 'default'
+    if ( not defined $name ) {
+        if ( keys %$conf == 1 ) {
+            ($name) = keys %$conf;
+        }
+        elsif ( exists $conf->{default} ) {
+            $name = "default";
+        }
+        else {
+            die "Can't determine a default queue name";
+        }
     }
-    elsif ( exists $conf->{default} ) {
-      $name = "default";
-    }
-    else {
-      die "Can't determine a default queue name";
-    }
-  }
 
-  # return cached object if already created
-  return $queues{$name} if defined $queues{$name};
+    # return cached object if already created
+    return $queues{$name} if defined $queues{$name};
 
-  # otherwise, instantiate the object from config settings
-  my $queue_conf = $conf->{$name}
-    or die "No configuration for queue '$name'";
+    # otherwise, instantiate the object from config settings
+    my $queue_conf = $conf->{$name}
+      or die "No configuration for queue '$name'";
 
-  my $class = $queue_conf->{class}
-    or die "No class specified for queue '$name'";
+    my $class = $queue_conf->{class}
+      or die "No class specified for queue '$name'";
 
-  $class = "Dancer2::Plugin::Queue::$class";
+    $class = "Dancer2::Plugin::Queue::$class";
 
-  try_load_class($class)
-    or die "Queue class '$class' could not be loaded";
+    try_load_class($class)
+      or die "Queue class '$class' could not be loaded";
 
-  $class->can('DOES') && $class->DOES("Dancer2::Plugin::Queue::Role::Queue")
-    or die "Queue class '$class' does not implement the expected role";
+    $class->can('DOES') && $class->DOES("Dancer2::Plugin::Queue::Role::Queue")
+      or die "Queue class '$class' does not implement the expected role";
 
-  my $object = eval { $class->new( $queue_conf->{options} || {} ) }
-    or die "Could not create $class object: $@";
+    my $object = eval { $class->new( $queue_conf->{options} || {} ) }
+      or die "Could not create $class object: $@";
 
-  return $queues{$name} = $object;
+    return $queues{$name} = $object;
 };
 
-register_plugin for_versions => [ 2 ];
+register_plugin for_versions => [2];
 1;
 
 =for Pod::Coverage method_names_here
