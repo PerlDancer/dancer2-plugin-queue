@@ -50,22 +50,12 @@ sub _build__server {
 
         set confdir      => '.';
         set startup_info => 0;
-        set print_banner => 0;
         set show_errors  => 1;
         set plugins      => {
             Queue => {
                 default => {
                     class   => $self->backend,
                     options => $self->options,
-                },
-            }
-        };
-
-        set plugins => {
-            Queue => {
-                default => {
-                    class   => 'Array',
-                    options => { name => 'Foo' },
                 },
             }
         };
@@ -110,7 +100,7 @@ In your backend test file:
 
     with 'Dancer2::Plugin::Queue::Role::Test';
 
-    main->new( backend => 'Array', options => { name => "foo" } )->run_me;
+    run_me({ backend => 'Array', options => { name => "foo" } });
 
     done_testing;
 

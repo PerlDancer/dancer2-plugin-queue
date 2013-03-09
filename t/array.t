@@ -3,7 +3,7 @@ use Test::Roo;
 
 with 'Dancer2::Plugin::Queue::Role::Test';
 
-main->new( backend => 'Array', options => { name => "foo" } )->run_me;
+run_me({ backend => 'Array', options => { name => "foo" } });
 
 done_testing;
 # COPYRIGHT
