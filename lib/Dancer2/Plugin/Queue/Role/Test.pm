@@ -33,10 +33,11 @@ A hash reference of options to configure the backend.
 =cut
 
 has options => (
-    is      => 'ro',
+    is      => 'lazy',
     isa     => HashRef,
-    default => sub { { name => 'test' } },
 );
+
+sub _build_options { }
 
 has _server => (
     is  => 'lazy',
