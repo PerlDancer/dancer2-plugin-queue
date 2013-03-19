@@ -6,7 +6,7 @@ Dancer2::Plugin::Queue - Dancer2 plugin for message queue abstractions
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 SYNOPSIS
 

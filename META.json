@@ -4,7 +4,7 @@
       "David Golden <dagolden@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300030, CPAN::Meta::Converter version 2.120921",
+   "generated_by" : "Dist::Zilla version 4.300031, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "apache_2_0"
    ],
@@ -72,19 +72,19 @@
    "provides" : {
       "Dancer2::Plugin::Queue" : {
          "file" : "lib/Dancer2/Plugin/Queue.pm",
-         "version" : "0.003"
+         "version" : "0.004"
       },
       "Dancer2::Plugin::Queue::Array" : {
          "file" : "lib/Dancer2/Plugin/Queue/Array.pm",
-         "version" : "0.003"
+         "version" : "0.004"
       },
       "Dancer2::Plugin::Queue::Role::Queue" : {
          "file" : "lib/Dancer2/Plugin/Queue/Role/Queue.pm",
-         "version" : "0.003"
+         "version" : "0.004"
       },
       "Dancer2::Plugin::Queue::Role::Test" : {
          "file" : "lib/Dancer2/Plugin/Queue/Role/Test.pm",
-         "version" : "0.003"
+         "version" : "0.004"
       }
    },
    "release_status" : "stable",
@@ -99,6 +99,6 @@
          "web" : "https://github.com/dagolden/dancer2-plugin-queue"
       }
    },
-   "version" : "0.003"
+   "version" : "0.004"
 }
 
