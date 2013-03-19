@@ -9,8 +9,6 @@ package Dancer2::Plugin::Queue::Role::Test;
 use Test::Roo::Role;
 use MooX::Types::MooseLike::Base qw/Str HashRef CodeRef/;
 
-use Dancer2 ':syntax';
-use Dancer2::Plugin::Queue;
 use HTTP::Tiny;
 use Test::TCP;
 
@@ -47,6 +45,9 @@ has _server => (
 sub _build__server {
     my ($self) = @_;
     return sub {
+        package MyServer;
+        use Dancer2 ':syntax';
+        use Dancer2::Plugin::Queue;
         my $port = shift;
 
         set confdir      => '.';

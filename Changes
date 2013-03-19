@@ -2,6 +2,10 @@ Revision history for Dancer2-Plugin-Queue
 
 {{$NEXT}}
 
+    [FIXED]
+
+    - Fixed Dancer2::Plugin::Queue::Role::Test for Moo 1.001 changes
+
 0.003     2013-03-09 21:24:14 America/New_York
 
     [CHANGED]
