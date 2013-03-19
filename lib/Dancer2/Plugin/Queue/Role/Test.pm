@@ -45,7 +45,8 @@ has _server => (
 sub _build__server {
     my ($self) = @_;
     return sub {
-        package MyServer;
+        package
+            MyServer;
         use Dancer2 ':syntax';
         use Dancer2::Plugin::Queue;
         my $port = shift;
