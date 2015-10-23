@@ -5,7 +5,7 @@ use warnings;
 package Dancer2::Plugin::Queue::Array;
 # ABSTRACT: Single-process, in-memory queue
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 # Dependencies
 use Moo;

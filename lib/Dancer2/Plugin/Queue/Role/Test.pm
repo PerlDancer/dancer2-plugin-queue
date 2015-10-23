@@ -5,7 +5,7 @@ use warnings;
 package Dancer2::Plugin::Queue::Role::Test;
 # ABSTRACT: A Test::Roo::Role for testing Queue backends
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 use Test::Roo::Role;
 use MooX::Types::MooseLike::Base qw/Str HashRef CodeRef/;

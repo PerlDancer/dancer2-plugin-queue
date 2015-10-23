@@ -5,7 +5,7 @@ use warnings;
 package Dancer2::Plugin::Queue::Role::Queue;
 # ABSTRACT: Dancer2::Plugin::Queue implementation API
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 use Moo::Role;
 
