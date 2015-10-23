@@ -4,7 +4,8 @@ use warnings;
 
 package Dancer2::Plugin::Queue::Role::Test;
 # ABSTRACT: A Test::Roo::Role for testing Queue backends
-# VERSION
+
+our $VERSION = '0.005';
 
 use Test::Roo::Role;
 use MooX::Types::MooseLike::Base qw/Str HashRef CodeRef/;
@@ -70,7 +71,7 @@ sub _build__server {
             return $body;
         };
 
-        Dancer2->runner->server->port($port);
+        Dancer2->runner->server->{ port } = $port;
         start;
     };
 }

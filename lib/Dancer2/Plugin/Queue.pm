@@ -4,7 +4,8 @@ use warnings;
 
 package Dancer2::Plugin::Queue;
 # ABSTRACT: Dancer2 plugin for message queue abstractions
-# VERSION
+
+our $VERSION = '0.005';
 
 use Dancer2::Plugin;
 use Class::Load qw/try_load_class/;
@@ -53,7 +54,7 @@ register queue => sub {
     return $queues{$name} = $object;
 };
 
-register_plugin for_versions => [2];
+register_plugin;
 1;
 
 =for Pod::Coverage method_names_here
