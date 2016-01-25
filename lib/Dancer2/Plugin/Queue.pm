@@ -14,7 +14,7 @@ my %queues;
 my $conf;
 
 register queue => sub {
-    my ( $dsl, $name ) = plugin_args(@_);
+    my ( $dsl, $name ) = @_;
     $conf ||= plugin_setting();
 
     # if name not specified, DWIM or use 'default'
