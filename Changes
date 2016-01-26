@@ -2,6 +2,12 @@ Revision history for Dancer2-Plugin-Queue
 
 {{$NEXT}}
 
+    [CHANGED]
+
+    - Changes to support Dancer2::Plugin2 (Peter Mottram, Dancer2 team)
+
+0.005     2015-10-23 13:15:47-05:00 America/Chicago
+
     [FIXED]
     
     - Dist::Zilla/deployment changes (David Golden, Jason A. Crome) 
